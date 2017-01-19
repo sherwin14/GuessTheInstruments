@@ -5,16 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fragment_art_recyclerview"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
         android:id="@+id/player_container"
         android:padding="10dp"
         android:elevation="5dp"
-        >
+        android:gravity="center_horizontal|center_vertical"
+
+        android:layout_below="@+id/fragment_art_recyclerview"
+        android:layout_centerHorizontal="true">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -68,13 +79,5 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_art_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

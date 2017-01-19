@@ -1,7 +1,9 @@
 package com.webteq.guesstheinstruments.adapters;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +84,18 @@ public class InstrumentsAdapter extends RecyclerView.Adapter<InstrumentsAdapter.
     public InstrumentsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.instrument_layout,parent,false);
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        ((AppCompatActivity) context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int height = metrics.heightPixels;
+        int width = metrics.widthPixels;
+        int h = height / 5;
+        int w = width / 4;
+        RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) itemView.getLayoutParams();
+        layoutParams.height = h;
+        layoutParams.width = w;
+
+        itemView.setLayoutParams(layoutParams);
         return new InstrumentsViewHolder(itemView);
     }
 

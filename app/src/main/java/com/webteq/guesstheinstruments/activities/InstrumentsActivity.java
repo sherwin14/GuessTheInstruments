@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +43,15 @@ public class InstrumentsActivity extends AppCompatActivity {
     private ImageView imageView;
     private TextView textView;
     private SoundMediaPlayer soundPlayer;
-
+    private LinearLayout ll;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_instruments);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+        ll = (LinearLayout) findViewById(R.id.player_container);
 
         imageView = (ImageView) findViewById(R.id.imageClip);
         textView  = (TextView)  findViewById(R.id.caption);
@@ -65,13 +68,12 @@ public class InstrumentsActivity extends AppCompatActivity {
         adapter = new InstrumentsAdapter(instrumentsModelList, this, new OnClickListener() {
             @Override
             public void OnItemClick(View view, InstrumentsModel model) {
-                //Toast.makeText(getBaseContext(),model.getIntrumentName(),Toast.LENGTH_SHORT).show();
 
                 if(soundPlayer != null){
                     soundPlayer.stop();
                 }
 
-                LinearLayout ll = (LinearLayout) findViewById(R.id.player_container);
+
                 ll.setVisibility(View.VISIBLE);
 
                 Glide.with(getBaseContext())
