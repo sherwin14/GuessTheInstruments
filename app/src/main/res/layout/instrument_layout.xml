@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view_instrument"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="1dp"
+    android:layout_margin="5dp"
+    >
+
+    <LinearLayout
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:src="@drawable/placeholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/instrumentThumb"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Instrument Name"
+            android:id="@+id/instrumentName"
+            android:textAlignment="center"
+            android:textColor="@color/colorLight"
+            android:background="@color/colorAccent"
+            />
+    </LinearLayout>
+</android.support.v7.widget.CardView>
