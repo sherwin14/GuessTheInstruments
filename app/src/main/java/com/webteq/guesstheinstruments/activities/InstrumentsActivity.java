@@ -67,6 +67,10 @@ public class InstrumentsActivity extends AppCompatActivity {
             public void OnItemClick(View view, InstrumentsModel model) {
                 //Toast.makeText(getBaseContext(),model.getIntrumentName(),Toast.LENGTH_SHORT).show();
 
+                if(soundPlayer != null){
+                    soundPlayer.stop();
+                }
+
                 LinearLayout ll = (LinearLayout) findViewById(R.id.player_container);
                 ll.setVisibility(View.VISIBLE);
 
