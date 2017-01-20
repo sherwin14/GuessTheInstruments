@@ -2,21 +2,14 @@ package com.webteq.guesstheinstruments.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -33,7 +26,7 @@ import java.util.List;
  * Created by Sherwin on 1/19/2017.
  */
 
-public class InstrumentsActivity extends AppCompatActivity {
+public class InstrumentsActivity extends BaseActivity {
 
     private RecyclerView instrumentRecycler;
     private LinearLayoutManager llm;
@@ -47,9 +40,9 @@ public class InstrumentsActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_instruments);
+        setContentView(R.layout.activity_instruments);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setTitle("Instruments List");
 
         ll = (LinearLayout) findViewById(R.id.player_container);
 
@@ -158,14 +151,19 @@ public class InstrumentsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(soundPlayer != null)
+            soundPlayer.stop();
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
+    public boolean onOptionsItemSelected(MenuItem item) {
 
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

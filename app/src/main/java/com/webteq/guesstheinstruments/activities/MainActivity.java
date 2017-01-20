@@ -11,13 +11,13 @@ import android.widget.TextView;
 import com.webteq.guesstheinstruments.R;
 import com.webteq.guesstheinstruments.SoundMediaPlayer;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private Button playGame,instrument,scoreBoard,instructions;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -37,7 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonPlay:
-
+                Intent it = new Intent(this,ChooseGameActivity.class);
+                startActivity(it);
                 break;
             case R.id.buttonList:
                 Intent intent = new Intent(this,InstrumentsActivity.class);
