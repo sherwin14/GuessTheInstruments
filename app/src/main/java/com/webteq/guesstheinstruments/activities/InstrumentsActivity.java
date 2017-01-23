@@ -2,6 +2,7 @@ package com.webteq.guesstheinstruments.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -121,8 +122,19 @@ public class InstrumentsActivity extends BaseActivity {
         adapter.setHasStableIds(true);
         instrumentRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
     }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 
     public void LoadData(){
         instrumentsModelList = new ArrayList<>();

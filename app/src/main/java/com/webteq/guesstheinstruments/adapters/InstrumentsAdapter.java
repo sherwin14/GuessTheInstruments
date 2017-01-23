@@ -89,11 +89,11 @@ public class InstrumentsAdapter extends RecyclerView.Adapter<InstrumentsAdapter.
         ((AppCompatActivity) context).getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
-        int h = height / 5;
+        int h = height / 4;
         int w = width / 4;
         RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) itemView.getLayoutParams();
         layoutParams.height = h;
-        layoutParams.width = w;
+        layoutParams.width = (int)w;
 
         itemView.setLayoutParams(layoutParams);
         return new InstrumentsViewHolder(itemView);

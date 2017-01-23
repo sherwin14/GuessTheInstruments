@@ -33,6 +33,7 @@
     -->
     <list>
         <mapping class="com.webteq.guesstheinstruments.Models.PlayersModel" />
+        <mapping class="com.webteq.guesstheinstruments.Models.GameModels" />
     </list>
 
     <!--
