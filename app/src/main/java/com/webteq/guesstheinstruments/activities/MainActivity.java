@@ -35,7 +35,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.buttonPlay:
-                Intent it = new Intent(this,ChooseGameActivity.class);
+                Intent it = new Intent(this,GameActivity.class);
+                Bundle b = new Bundle();
+                b.putString("game","picture");
                 startActivity(it);
                 break;
             case R.id.buttonList:
