@@ -1,21 +1,16 @@
 package com.webteq.guesstheinstruments.Models;
 
-import org.litepal.annotation.Column;
-import org.litepal.crud.DataSupport;
 
 /**
  * Created by user on 19/01/2017.
  */
 
-public class PlayersModel extends DataSupport {
+public class PlayersModel  {
 
-    @Column(nullable = false)
     private String player_name;
 
-    @Column(nullable =  false)
     private String player_score;
 
-    @Column(nullable = false)
     private String date_played;
 
     public PlayersModel(String player_name, String player_score, String date_played) {

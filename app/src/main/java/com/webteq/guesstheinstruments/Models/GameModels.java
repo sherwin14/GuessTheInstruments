@@ -1,39 +1,28 @@
 package com.webteq.guesstheinstruments.Models;
 
-import org.litepal.annotation.Column;
-import org.litepal.crud.DataSupport;
 
 /**
  * Created by user on 19/01/2017.
  */
 
-public class GameModels extends DataSupport {
-    @Column(nullable = false)
-    private String game_type;
+public class GameModels  {
 
-    @Column(nullable = false)
-    private String image;
+    private int image;
 
-    @Column(nullable = false)
-    private String sound;
+    private int sound;
 
-    @Column(nullable = false)
     private String choice_one;
 
-    @Column(nullable = false)
     private String choice_two;
 
-    @Column(nullable = false)
     private String choice_three;
 
-    @Column(nullable = false)
     private String choice_four;
 
-    @Column(nullable = false)
     private String answer;
 
-    public GameModels(String game_type, String image, String sound, String choice_one, String choice_two, String choice_three, String choice_four, String answer) {
-        this.game_type = game_type;
+    public GameModels( int image, int sound, String choice_one, String choice_two, String choice_three, String choice_four, String answer) {
+
         this.image = image;
         this.sound = sound;
         this.choice_one = choice_one;
@@ -43,27 +32,19 @@ public class GameModels extends DataSupport {
         this.answer = answer;
     }
 
-    public String getGame_type() {
-        return game_type;
-    }
-
-    public void setGame_type(String game_type) {
-        this.game_type = game_type;
-    }
-
-    public String getImage() {
+    public int getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(int image) {
         this.image = image;
     }
 
-    public String getSound() {
+    public int getSound() {
         return sound;
     }
 
-    public void setSound(String sound) {
+    public void setSound(int sound) {
         this.sound = sound;
     }
 
