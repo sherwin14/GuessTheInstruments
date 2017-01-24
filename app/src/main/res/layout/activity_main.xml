@@ -32,16 +32,38 @@
         android:layout_alignLeft="@+id/textTitle"
         android:layout_alignStart="@+id/textTitle" />
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="62dp"
-        android:layout_below="@+id/textDescription"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/llTop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/llTop"
+        android:id="@+id/llBottom"
         >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonInstruction"
+            android:text="Instructions"
+            android:textColor="@color/colorLight"
+            android:background="@color/colorPrimary"
+            android:layout_weight="1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="60dp"
+        android:id="@+id/llTop"
+        android:layout_below="@+id/textDescription"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -58,39 +80,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonList"
             android:text="Instruments"
-            android:textColor="@color/colorLight"
-            android:background="@color/colorPrimary"
-            android:layout_weight="1"
-            />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:layout_below="@+id/llTop"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/llBottom"
-        >
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonScoreBoard"
-            android:text="ScoreBoard"
-            android:textColor="@color/colorLight"
-            android:background="@color/colorPrimary"
-            android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonInstruction"
-            android:text="Instructions"
             android:textColor="@color/colorLight"
             android:background="@color/colorPrimary"
             android:layout_weight="1"

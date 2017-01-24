@@ -13,7 +13,7 @@ import com.webteq.guesstheinstruments.SoundMediaPlayer;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
 
-    private Button playGame,instrument,scoreBoard,instructions;
+    private Button playGame,instrument,instructions;
 
 
     @Override
@@ -23,12 +23,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         playGame = (Button) findViewById(R.id.buttonPlay);
         instrument = (Button) findViewById(R.id.buttonList);
-        scoreBoard = (Button) findViewById(R.id.buttonScoreBoard);
         instructions = (Button) findViewById(R.id.buttonInstruction);
 
         playGame.setOnClickListener(this);
         instrument.setOnClickListener(this);
-        scoreBoard.setOnClickListener(this);
         instructions.setOnClickListener(this);
 
     }
@@ -43,8 +41,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             case R.id.buttonList:
                 Intent intent = new Intent(this,InstrumentsActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.buttonScoreBoard:
                 break;
             case R.id.buttonInstruction:
                 break;

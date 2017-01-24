@@ -11,12 +11,11 @@
         android:theme="@style/AppTheme.NoActionBar">
 
         <meta-data android:name="com.webteq.guesstheinstruments.GlideConfiguration"
-            android:value="GlideModule"/>
+        android:value="GlideModule"/>
 
         <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -27,7 +26,7 @@
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme"/>
         <activity android:name=".activities.ChooseGameActivity"
-            android:theme="@style/AppTheme"/>
+        android:theme="@style/AppTheme"/>
         <activity android:name=".activities.GameActivity"
             android:theme="@style/AppTheme"/>
     </application>
