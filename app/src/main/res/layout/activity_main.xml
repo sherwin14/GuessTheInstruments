@@ -7,14 +7,6 @@
     tools:context="com.webteq.guesstheinstruments.activities.MainActivity"
     >
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:layout_alignParentBottom="true"
-        android:src="@drawable/bg"
-        android:scaleType="centerCrop"
-        />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,6 +113,17 @@
             android:layout_alignParentStart="true"
             />
     </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>
