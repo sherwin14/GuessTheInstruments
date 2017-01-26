@@ -140,23 +140,24 @@ public class InstrumentsActivity extends BaseActivity {
         instrumentsModelList = new ArrayList<>();
         instrumentsModelList.add(new InstrumentsModel("BAGPIPE","null",R.drawable.bagpipe_clipart,R.raw.bagpipes_sound));
         instrumentsModelList.add(new InstrumentsModel("BANJO","null",R.drawable.banjo_clipart,R.raw.banjo_sound));
-        instrumentsModelList.add(new InstrumentsModel("BASSDRUM","null",R.drawable.bass_clipart,R.raw.bass_drum_sound));
+        instrumentsModelList.add(new InstrumentsModel("BASSDRUM","null",R.drawable.bass_clipart,R.raw.bass_sound));
         instrumentsModelList.add(new InstrumentsModel("CLARINET","null",R.drawable.clarinet_clipart,R.raw.clarinet_sound));
-        instrumentsModelList.add(new InstrumentsModel("DRUM SET","null",R.drawable.drum_set_clipart,R.raw.drum_set_sound));
+        instrumentsModelList.add(new InstrumentsModel("DRUM SET","null",R.drawable.drum_set_clipart,R.raw.drums_sound));
         instrumentsModelList.add(new InstrumentsModel("DRUM","null",R.drawable.drum_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("ELECTRIC GUITAR","null",R.drawable.electric_guitar_clipart,R.raw.bagpipes_sound));
+        instrumentsModelList.add(new InstrumentsModel("ELECTRIC GUITAR","null",R.drawable.electric_guitar_clipart,R.raw.electric_sound));
 
-        instrumentsModelList.add(new InstrumentsModel("FLUTE","null",R.drawable.flute_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("FRENCH HORN","null",R.drawable.french_horn_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("GUITAR","null",R.drawable.guitar_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("HARMONICA","null",R.drawable.harmonica_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("HARP","null",R.drawable.harp_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("KEYBOARD","null",R.drawable.keyboard_clipart,R.raw.bagpipes_sound));
+        instrumentsModelList.add(new InstrumentsModel("FLUTE","null",R.drawable.flute_clipart,R.raw.flute_sound));
+        instrumentsModelList.add(new InstrumentsModel("FRENCH HORN","null",R.drawable.french_horn_clipart,R.raw.horn_sound));
+        instrumentsModelList.add(new InstrumentsModel("GUITAR","null",R.drawable.guitar_clipart,R.raw.guitar_sound));
+        instrumentsModelList.add(new InstrumentsModel("HARMONICA","null",R.drawable.harmonica_clipart,R.raw.harmonica_sound));
+        instrumentsModelList.add(new InstrumentsModel("HARP","null",R.drawable.harp_clipart,R.raw.harp_sound));
+        //not yet
         instrumentsModelList.add(new InstrumentsModel("LYRE","null",R.drawable.lyre_clipart,R.raw.bagpipes_sound));
 
-        instrumentsModelList.add(new InstrumentsModel("MANDOLIN","null",R.drawable.mandolin_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("MARACAS","null",R.drawable.maracas_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("PIANO","null",R.drawable.piano_clipart,R.raw.bagpipes_sound));
+        instrumentsModelList.add(new InstrumentsModel("MANDOLIN","null",R.drawable.mandolin_clipart,R.raw.mandolin_sound));
+        instrumentsModelList.add(new InstrumentsModel("MARACAS","null",R.drawable.maracas_clipart,R.raw.maraca_sound));
+        instrumentsModelList.add(new InstrumentsModel("PIANO","null",R.drawable.piano_clipart,R.raw.piano_sound));
+        //Not yet
         instrumentsModelList.add(new InstrumentsModel("SAXOPHONE","null",R.drawable.saxophone_clipart,R.raw.bagpipes_sound));
         instrumentsModelList.add(new InstrumentsModel("TAMBOURINE","null",R.drawable.tambourine_clipart,R.raw.bagpipes_sound));
         instrumentsModelList.add(new InstrumentsModel("TRIANGLE","null",R.drawable.triangle_clipart,R.raw.bagpipes_sound));
