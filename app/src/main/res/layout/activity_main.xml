@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     tools:context="com.webteq.guesstheinstruments.activities.MainActivity"
     >
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView"
+        android:visibility="visible"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -21,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_below="@+id/llTop"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -48,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="120dp"
             android:id="@+id/llTop"
             android:layout_below="@+id/textDescription"
             android:layout_alignParentLeft="true"
@@ -83,21 +91,6 @@
                 />
         </LinearLayout>
 
-        =
-        <TextView
-            android:shadowColor="@color/colorLight"
-            android:shadowRadius="10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guess The Instruments"
-            android:id="@+id/textTitle"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,18 +105,23 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             />
+
+        <TextView
+            android:shadowColor="#FFEB3B"
+            android:shadowRadius="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guess The Instruments"
+            android:id="@+id/textTitle"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:src="@drawable/bg"
-        android:scaleType="centerCrop"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/imageView"
-        android:visibility="gone"/>
+
 
 
 </RelativeLayout>

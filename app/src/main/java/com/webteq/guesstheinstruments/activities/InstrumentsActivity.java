@@ -2,7 +2,6 @@ package com.webteq.guesstheinstruments.activities;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -142,25 +141,26 @@ public class InstrumentsActivity extends BaseActivity {
         instrumentsModelList.add(new InstrumentsModel("BANJO","null",R.drawable.banjo_clipart,R.raw.banjo_sound));
         instrumentsModelList.add(new InstrumentsModel("BASSDRUM","null",R.drawable.bass_clipart,R.raw.bass_sound));
         instrumentsModelList.add(new InstrumentsModel("CLARINET","null",R.drawable.clarinet_clipart,R.raw.clarinet_sound));
-        instrumentsModelList.add(new InstrumentsModel("DRUM SET","null",R.drawable.drum_set_clipart,R.raw.drums_sound));
-        instrumentsModelList.add(new InstrumentsModel("DRUM","null",R.drawable.drum_clipart,R.raw.bagpipes_sound));
+        instrumentsModelList.add(new InstrumentsModel("DRUM SET","null",R.drawable.drum_set_clipart,R.raw.drum_set_sound));
+        instrumentsModelList.add(new InstrumentsModel("DRUM","null",R.drawable.drum_clipart,R.raw.drum_sound));
         instrumentsModelList.add(new InstrumentsModel("ELECTRIC GUITAR","null",R.drawable.electric_guitar_clipart,R.raw.electric_sound));
-
         instrumentsModelList.add(new InstrumentsModel("FLUTE","null",R.drawable.flute_clipart,R.raw.flute_sound));
         instrumentsModelList.add(new InstrumentsModel("FRENCH HORN","null",R.drawable.french_horn_clipart,R.raw.horn_sound));
         instrumentsModelList.add(new InstrumentsModel("GUITAR","null",R.drawable.guitar_clipart,R.raw.guitar_sound));
         instrumentsModelList.add(new InstrumentsModel("HARMONICA","null",R.drawable.harmonica_clipart,R.raw.harmonica_sound));
         instrumentsModelList.add(new InstrumentsModel("HARP","null",R.drawable.harp_clipart,R.raw.harp_sound));
-        //not yet
-        instrumentsModelList.add(new InstrumentsModel("LYRE","null",R.drawable.lyre_clipart,R.raw.bagpipes_sound));
-
+        instrumentsModelList.add(new InstrumentsModel("LYRE","null",R.drawable.lyre_clipart,R.raw.lyre_sound));
         instrumentsModelList.add(new InstrumentsModel("MANDOLIN","null",R.drawable.mandolin_clipart,R.raw.mandolin_sound));
         instrumentsModelList.add(new InstrumentsModel("MARACAS","null",R.drawable.maracas_clipart,R.raw.maraca_sound));
         instrumentsModelList.add(new InstrumentsModel("PIANO","null",R.drawable.piano_clipart,R.raw.piano_sound));
-        //Not yet
-        instrumentsModelList.add(new InstrumentsModel("SAXOPHONE","null",R.drawable.saxophone_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("TAMBOURINE","null",R.drawable.tambourine_clipart,R.raw.bagpipes_sound));
-        instrumentsModelList.add(new InstrumentsModel("TRIANGLE","null",R.drawable.triangle_clipart,R.raw.bagpipes_sound));
+        instrumentsModelList.add(new InstrumentsModel("SAXOPHONE","null",R.drawable.saxophone_clipart,R.raw.saxophone_sound));
+        instrumentsModelList.add(new InstrumentsModel("TAMBOURINE","null",R.drawable.tambourine_clipart,R.raw.tambourine_sound));
+        instrumentsModelList.add(new InstrumentsModel("TRIANGLE","null",R.drawable.triangle_clipart,R.raw.triangles_sound));
+        instrumentsModelList.add(new InstrumentsModel("TROMBONE","null",R.drawable.trombone_clipart,R.raw.trombone_sound));
+        instrumentsModelList.add(new InstrumentsModel("TRUMPET","null",R.drawable.trumpet_clipart,R.raw.trumpet_sound));
+        instrumentsModelList.add(new InstrumentsModel("TUBA","null",R.drawable.tuba_clipart,R.raw.tuba_sound));
+        instrumentsModelList.add(new InstrumentsModel("VIOLIN","null",R.drawable.violin_clipart,R.raw.violin_sound));
+        instrumentsModelList.add(new InstrumentsModel("XYLOPHONE","null",R.drawable.xylophone_clipart,R.raw.xylophone_sound));
     }
 
     @Override

@@ -24,6 +24,7 @@ public class SoundMediaPlayer {
 
     public void play() {
         mediaPlayer.start();
+        mediaPlayer.setLooping(true);
     }
     public void stop(){
         mediaPlayer.pause();

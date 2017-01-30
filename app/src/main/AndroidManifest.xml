@@ -3,6 +3,7 @@
     package="com.webteq.guesstheinstruments">
 
     <application
+
         android:name=".GuessTheInstruments"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +14,7 @@
         <meta-data android:name="com.webteq.guesstheinstruments.GlideConfiguration"
         android:value="GlideModule"/>
 
-        <activity android:name=".activities.SplashScreen">
+        <activity android:name=".activities.SplashScreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
