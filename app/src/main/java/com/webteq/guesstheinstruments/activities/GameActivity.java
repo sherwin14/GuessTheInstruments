@@ -133,7 +133,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         gameModels.add(new GameModels(R.drawable.banjo_clipart,R.raw.banjo_sound,"Banjo","Bass Drum","Electric Guitar","Piano","Banjo"));
         gameModels.add(new GameModels(R.drawable.bass_clipart,R.raw.bass_sound,"Bagpipes","Bass Drum","Piano","Clarinet","Bass Drum"));
         gameModels.add(new GameModels(0,R.raw.clarinet_sound,"Electric Guitar","Bagpipes","Clarinet","Piano","Clarinet"));
-        gameModels.add(new GameModels(0,R.raw.drum_set_sound,"Drums","Bagpipes","Clarinet","Piano","Drum Set"));
+        gameModels.add(new GameModels(0,R.raw.drum_set_sound,"Drum Set","Bagpipes","Clarinet","Piano","Drum Set"));
         gameModels.add(new GameModels(0,R.raw.electric_sound,"Drums","Bagpipes","Clarinet","Electric Guitar","Electric Guitar"));
         gameModels.add(new GameModels(0,R.raw.flute_sound,"Flute","Bagpipes","Clarinet","Electric Guitar","Flute"));
         gameModels.add(new GameModels(0,R.raw.guitar_sound,"Guitar","Bagpipes","Clarinet","Electric Guitar","Guitar"));
@@ -143,18 +143,16 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         gameModels.add(new GameModels(0,R.raw.mandolin_sound,"Piano","Mandolin","Clarinet","Horn","Mandolin"));
         gameModels.add(new GameModels(0,R.raw.maraca_sound,"Electric Guitar","Drums","Maraca","Clarinet","Maraca"));
         gameModels.add(new GameModels(0,R.raw.piano_sound,"Drums","Mandolin","Piano","Electric Guitar","Piano"));
-        gameModels.add(new GameModels(0,R.raw.saxophone_sound,"Flute","Bagpipes","Clarinet","Electric Guitar","Saxophone"));
-        gameModels.add(new GameModels(0,R.raw.tambourine_sound,"Guitar","Bagpipes","Clarinet","Electric Guitar","Tambourine"));
-        gameModels.add(new GameModels(0,R.raw.triangles_sound,"Drums","Bagpipes","Harmonica","Electric Guitar","Triangles"));
-        gameModels.add(new GameModels(0,R.raw.trombone_sound,"Harp","Bagpipes","Flute","Piano","Trombone"));
-        gameModels.add(new GameModels(0,R.raw.trumpet_sound,"Drums","Horn","Clarinet","Harp","Trumpet"));
-        gameModels.add(new GameModels(0,R.raw.tuba_sound,"Piano","Mandolin","Clarinet","Horn","Tuba"));
-        gameModels.add(new GameModels(0,R.raw.violin_sound,"Electric Guitar","Drums","Maraca","Clarinet","Violin"));
-        gameModels.add(new GameModels(0,R.raw.xylophone_sound,"Drums","Mandolin","Piano","Electric Guitar","Xylophone"));
+        gameModels.add(new GameModels(0,R.raw.saxophone_sound,"Flute","Piano","Saxophone","Electric Guitar","Saxophone"));
+        gameModels.add(new GameModels(0,R.raw.tambourine_sound,"Guitar","Bagpipes","Clarinet","Tambourine","Tambourine"));
+        gameModels.add(new GameModels(0,R.raw.triangles_sound,"Drums","Triangles","Harmonica","Electric Guitar","Triangles"));
+        gameModels.add(new GameModels(0,R.raw.trombone_sound,"Harp","Bagpipes","Trombone","Piano","Trombone"));
+        gameModels.add(new GameModels(0,R.raw.trumpet_sound,"Trumpet","Horn","Clarinet","Harp","Trumpet"));
+        gameModels.add(new GameModels(0,R.raw.tuba_sound,"Piano","Mandolin","Tuba","Horn","Tuba"));
+        gameModels.add(new GameModels(0,R.raw.violin_sound,"Violin","Drums","Maraca","Clarinet","Violin"));
+        gameModels.add(new GameModels(0,R.raw.xylophone_sound,"Drums","Mandolin","Xylophone","Electric Guitar","Xylophone"));
         gameModels.add(new GameModels(0,R.raw.lyre_sound,"Electric Guitar","Drums","Lyre","Clarinet","Lyre"));
         gameModels.add(new GameModels(0,R.raw.drum_sound,"Drums","Mandolin","Piano","Electric Guitar","Drums"));
-
-
 
         list = new ArrayList<>(gameModels.size());
         for(int i = 1; i <=gameModels.size(); i++) {

@@ -1,6 +1,7 @@
 package com.webteq.guesstheinstruments;
 
 import android.content.Context;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 
 
@@ -20,15 +21,29 @@ public class SoundMediaPlayer {
         this._raw = _raw;
         //Testing comment
         mediaPlayer = MediaPlayer.create(_context,_raw);
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
     }
 
     public void play() {
+       if(isPlaying()){
+           mediaPlayer.stop();
+       }
         mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.release();
+            }
+        });
         mediaPlayer.setLooping(true);
+
     }
     public void stop(){
-        mediaPlayer.pause();
-        mediaPlayer.seekTo(0);
+        if(isPlaying()){
+            mediaPlayer.pause();
+            mediaPlayer.seekTo(0);
+        }
+
         //mediaPlayer.release();
     }
 
