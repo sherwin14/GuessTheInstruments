@@ -29,12 +29,6 @@ public class SoundMediaPlayer {
            mediaPlayer.stop();
        }
         mediaPlayer.start();
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                mediaPlayer.release();
-            }
-        });
         mediaPlayer.setLooping(true);
 
     }
@@ -47,7 +41,7 @@ public class SoundMediaPlayer {
         //mediaPlayer.release();
     }
 
-    public boolean isPlaying(){
+    public boolean isPlaying() throws IllegalStateException  {
         return mediaPlayer.isPlaying();
     }
 

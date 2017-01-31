@@ -1,11 +1,20 @@
 package com.webteq.guesstheinstruments.activities;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.vstechlab.easyfonts.EasyFonts;
@@ -20,13 +29,20 @@ import java.util.Random;
 public class GameActivity extends BaseActivity implements View.OnClickListener{
     private ArrayList<GameModels> gameModels;
     private ArrayList<Integer> list;
-    private int questionSize=0;
-    private ImageView imgThumb,img1,img2,img3;
+
+    private ImageView img1,img2,img3;
     private Button btnA,btnB,btnC,btnD,btnNext;
     private GameModels model;
     private ImageButton play;
     private SoundMediaPlayer smp;
+    private Chronometer chronometer;
+    private TextView levels;
+
+    private long timeWhenStopped = 0;
     private int wrong_ans = 0;
+    private int correct_ans = 0;
+    private int questionSize=0;
+    private boolean firstPlay = true;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,7 +50,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Game");
+        chronometer = (Chronometer) findViewById(R.id.chronometer);
+
         play = (ImageButton) findViewById(R.id.game_play);
+        levels = (TextView) findViewById(R.id.textView3);
 
         img1 = (ImageView) findViewById(R.id.imageView1);
         img2 = (ImageView) findViewById(R.id.imageView2);
@@ -77,6 +96,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onClick(View view) {
 
+                if(firstPlay){
+                    chronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                    chronometer.start();
+                    firstPlay = false;
+                }
 
                 if(smp.isPlaying()){
                     smp.stop();
@@ -84,6 +108,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 }else {
                     smp.play();
                     play.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_circle_filled));
+
                 }
             }
         });
@@ -93,16 +118,31 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         btnB.setOnClickListener(this);
         btnC.setOnClickListener(this);
         btnD.setOnClickListener(this);
+
+        chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if(levels.getText().equals("Level 1")){
+                    if(chronometer.getText().equals("00:10")){
+                        chronometer.stop();
+                        smp.stop();
+                        showPopUp("Times Up!","Please wait",R.layout.game_over);
+                        levels.setText("Level 2");
+                    }
+                }
+            }
+        });
     }
 
     @Override
     public void onClick(View view) {
         String answer = ((Button)view).getText().toString();
-
-
+        smp.stop();
+        play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
 
         if(model.getAnswer().contains(answer)){
             Toast.makeText(GameActivity.this,"Correct",Toast.LENGTH_SHORT).show();
+            correct_ans++;
         }else{
             wrong_ans++;
 
@@ -110,10 +150,45 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 img3.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
             }else if(wrong_ans == 2){
                 img2.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
-            }else if(wrong_ans == 3){
+            }else if(wrong_ans > 2) {
                 img1.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
+                showPopUp("Game Over","You don't have enough life!",R.layout.game_over);
             }
         }
+    }
+
+    private void showPopUp(String Title,String Message,int Drawable){
+        TextView title = new TextView(this);
+        title.setText(Title);
+        title.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+        title.setPadding(10, 15, 15, 10);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+
+        title.setTextSize(22);
+        final android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setCustomTitle(title);
+
+        builder.setMessage(Message);
+        builder.setView(Drawable);
+        builder.setCancelable(false);
+        builder.setPositiveButton("Quit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+                onBackPressed();
+            }
+        });
+
+        builder.setNegativeButton("Try Again", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        android.support.v7.app.AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void loadData(){
