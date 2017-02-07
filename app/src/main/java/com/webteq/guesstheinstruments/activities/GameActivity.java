@@ -23,13 +23,16 @@ import com.webteq.guesstheinstruments.R;
 import com.webteq.guesstheinstruments.SoundMediaPlayer;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.Random;
 
 
 public class GameActivity extends BaseActivity implements View.OnClickListener{
     private ArrayList<GameModels> gameModels;
-    private ArrayList<Integer> list;
-
+    private ArrayList<String> list;
+    private ArrayList<Integer> iii;
     private ImageView img1,img2,img3;
     private Button btnA,btnB,btnC,btnD,btnNext;
     private GameModels model;
@@ -79,14 +82,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                smp.stop();
-                play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
-                if(((Button)view).getText() == "Done"){
-                    Toast.makeText(getApplication(),"DONE!!",Toast.LENGTH_SHORT).show();
-                }else{
-                    model = gameModels.get(randomInt());
-                    loadData();
-                }
+                goNext();
             }
         });
 
@@ -123,7 +119,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 if(levels.getText().equals("Level 1")){
-                    if(chronometer.getText().equals("00:10")){
+                    if(chronometer.getText().equals("01:00")){
                         chronometer.stop();
                         smp.stop();
                         showPopUp("Times Up!","Please wait",R.layout.game_over);
@@ -132,6 +128,25 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 }
             }
         });
+    }
+
+    private void goNext(){
+        smp.stop();
+        play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
+        if(btnNext.getText() == "Done"){
+            Toast.makeText(getApplication(),"DONE!!",Toast.LENGTH_SHORT).show();
+        }else{
+            model = gameModels.get(randomInt());
+            loadData();
+            if(smp.isPlaying()){
+                smp.stop();
+                play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
+            }else {
+                smp.play();
+                play.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_circle_filled));
+
+            }
+        }
     }
 
     @Override
@@ -155,6 +170,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 showPopUp("Game Over","You don't have enough life!",R.layout.game_over);
             }
         }
+        goNext();
+
     }
 
     private void showPopUp(String Title,String Message,int Drawable){
@@ -230,20 +247,24 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         gameModels.add(new GameModels(0,R.raw.drum_sound,"Drums","Mandolin","Piano","Electric Guitar","Drums"));
 
         list = new ArrayList<>(gameModels.size());
-        for(int i = 1; i <=gameModels.size(); i++) {
-            list.add(i);
+
+        for(GameModels m:gameModels){
+            list.add(m.getAnswer());
         }
+
+        iii = new ArrayList<>(list.size());
+        Log.v("Sount",String.valueOf(list.size()));
     }
 
     private int randomInt(){
         int index;
 
-
-        Log.d("pos",list.size() + "");
+// Error in randomizing integer
         Random rand = new Random();
         index = rand.nextInt(list.size());
+        Log.v("pos", String.valueOf(index));
+        iii.add(index);
         list.remove(index);
-
         if (list.size() < 1)
         {
             btnNext.setText("Done");
@@ -255,6 +276,6 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
     public void onBackPressed() {
         super.onBackPressed();
         if(smp != null)
-            smp.stop();
+            smp.reset();
     }
 }

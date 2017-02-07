@@ -49,9 +49,11 @@ public class SoundMediaPlayer {
         mediaPlayer.pause();
     }
 
-    public  void reset(){
+
+    public void reset(){
        if(mediaPlayer!=null){
            mediaPlayer.stop();
+           mediaPlayer.release();
        }
     }
 
