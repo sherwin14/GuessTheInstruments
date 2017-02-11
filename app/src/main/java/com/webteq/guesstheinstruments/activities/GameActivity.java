@@ -9,6 +9,7 @@ import android.os.SystemClock;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -275,5 +276,15 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         super.onBackPressed();
         if(smp != null)
             smp.reset();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId() == android.R.id.home){
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
