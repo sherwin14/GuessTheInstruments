@@ -31,8 +31,9 @@ import java.util.Random;
 
 public class GameActivity extends BaseActivity implements View.OnClickListener{
     private ArrayList<GameModels> gameModels;
-    private ArrayList<String> list;
-    private ArrayList<Integer> iii;
+    private ArrayList<GameModels> tempGameModels;
+    private int index;
+
     private ImageView img1,img2,img3;
     private Button btnA,btnB,btnC,btnD,btnNext;
     private GameModels model;
@@ -67,7 +68,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         btnC = (Button) findViewById(R.id.choiceThree);
         btnD = (Button) findViewById(R.id.choiceFour);
         btnNext = (Button) findViewById(R.id.next);
-
+        btnNext.setVisibility(View.INVISIBLE);
         btnA.setTypeface(EasyFonts.caviarDreams(this));
         btnB.setTypeface(EasyFonts.caviarDreams(this));
         btnC.setTypeface(EasyFonts.caviarDreams(this));
@@ -75,10 +76,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
 
 
         loadQuestions();
-        questionSize = gameModels.size();
-        Log.d("c",questionSize+"");
 
-        model = gameModels.get(randomInt());
+        model = getGameMusic();
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +118,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 if(levels.getText().equals("Level 1")){
-                    if(chronometer.getText().equals("01:00")){
+                    if(chronometer.getText().equals("05:00")){
                         chronometer.stop();
                         smp.stop();
                         showPopUp("Times Up!","Please wait",R.layout.game_over);
@@ -131,12 +130,14 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void goNext(){
-        smp.stop();
-        play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
-        if(btnNext.getText() == "Done"){
-            Toast.makeText(getApplication(),"DONE!!",Toast.LENGTH_SHORT).show();
-        }else{
-            model = gameModels.get(randomInt());
+        Log.v("Answer",tempGameModels.size()+"");
+        if(tempGameModels.size() > 1){
+
+            removeIndex();
+            smp.stop();
+            play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
+
+            model = getGameMusic();
             loadData();
             if(smp.isPlaying()){
                 smp.stop();
@@ -144,9 +145,11 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             }else {
                 smp.play();
                 play.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_circle_filled));
-
             }
+        }else{
+            showPopUp("CONGRATULATION", "You have " + correct_ans + " points!", R.layout.game_over);
         }
+
     }
 
     @Override
@@ -246,29 +249,24 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         gameModels.add(new GameModels(0,R.raw.lyre_sound,"Electric Guitar","Drums","Lyre","Clarinet","Lyre"));
         gameModels.add(new GameModels(0,R.raw.drum_sound,"Drums","Mandolin","Piano","Electric Guitar","Drums"));
 
-        list = new ArrayList<>(gameModels.size());
+        tempGameModels = new ArrayList<>(gameModels);
 
-        for(GameModels m:gameModels){
-            list.add(m.getAnswer());
-        }
-
-        iii = new ArrayList<>(list.size());
-        Log.v("Sount",String.valueOf(list.size()));
     }
 
-    private int randomInt(){
-        int index;
 
-// Error in randomizing integer
+    private void removeIndex(){
+        tempGameModels.remove(index);
+    }
+
+    private GameModels getGameMusic(){
+        return tempGameModels.get(getRandomIndex(tempGameModels.size()));
+    }
+
+    private int getRandomIndex(int size)   {
+       // throw new IllegalArgumentException(" size must be positive or greater than zero");
         Random rand = new Random();
-        index = rand.nextInt(list.size());
-        Log.v("pos", String.valueOf(index));
-        iii.add(index);
-        list.remove(index);
-        if (list.size() < 1)
-        {
-            btnNext.setText("Done");
-        }
+        index = size > 0 ? rand.nextInt(size): null;
+
         return index;
     }
 
