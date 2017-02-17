@@ -74,7 +74,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         btnB.setTypeface(EasyFonts.caviarDreams(this));
         btnC.setTypeface(EasyFonts.caviarDreams(this));
         btnD.setTypeface(EasyFonts.caviarDreams(this));
-
+        enableButtons(false);
 
         loadQuestions();
 
@@ -91,7 +91,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                enableButtons(true);
                 if(firstPlay){
                     chronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
                     chronometer.start();
@@ -118,15 +118,28 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                if(levels.getText().equals("Level 1")){
-                    if(chronometer.getText().equals("05:00")){
-                        chronometer.stop();
-                        smp.stop();
-                        showPopUp("Times Up!","Please wait",R.layout.game_over);
-                        levels.setText("Level 2");
-                    }
+              if(chronometer.getText().equals("01:00")){
+                 chronometer.stop();
+                 smp.stop();
+                 showPopUp("Times Up!","Please wait",R.layout.game_over);
+                 levels.setText("Level 2");
+                 }
+
+                if(chronometer.getText().equals("00:30") && levels.getText().equals("Level 2")){
+                    chronometer.stop();
+                    smp.stop();
+                    showPopUp("Times Up!","Please wait",R.layout.game_over);
+                    levels.setText("Level 3");
+                }
+
+                if(chronometer.getText().equals("00:10") && levels.getText().equals("Level 3")){
+                    chronometer.stop();
+                    smp.stop();
+                    showPopUp("Times Up!","Please wait",R.layout.game_over);
+                   // levels.setText("Level 2");
                 }
             }
+
         });
     }
 
@@ -164,6 +177,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             correct_ans++;
         }else{
             wrong_ans++;
+            chronometer.stop();
+            smp.stop();
 
             if(wrong_ans == 1){
                 img3.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
@@ -254,6 +269,12 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
 
     }
 
+    private void enableButtons(boolean b){
+        btnA.setEnabled(b);
+        btnB.setEnabled(b);
+        btnC.setEnabled(b);
+        btnD.setEnabled(b);
+    }
 
     private void removeIndex(){
         tempGameModels.remove(index);
