@@ -24,9 +24,6 @@ import com.webteq.guesstheinstruments.R;
 import com.webteq.guesstheinstruments.SoundMediaPlayer;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.Random;
 
 
@@ -46,8 +43,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
     private long timeWhenStopped = 0;
     private int wrong_ans = 0;
     private int correct_ans = 0;
-    private int questionSize=0;
+    private int answered_per_round=0;
     private boolean firstPlay = true;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,23 +117,27 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         chronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-              if(chronometer.getText().equals("01:00")){
-                 chronometer.stop();
-                 smp.stop();
-                 showPopUp("Times Up!","Please wait",R.layout.game_over);
-                 levels.setText("Level 2");
+                if(chronometer.getText().equals("01:00")){
+                    chronometer.stop();
+                    //smp.stop();
+                    //chronometer.start();
+                    showPopUp("Times Up!","Please wait",R.layout.game_over);
+                    //levels.setText("Level 2");
+
                  }
 
-                if(chronometer.getText().equals("00:30") && levels.getText().equals("Level 2")){
+                if(chronometer.getText().equals("00:40") && levels.getText().equals("Level 2")){
                     chronometer.stop();
-                    smp.stop();
+                    //smp.stop();
+                    //chronometer.start();
                     showPopUp("Times Up!","Please wait",R.layout.game_over);
-                    levels.setText("Level 3");
+                    //levels.setText("Level 3");
                 }
 
-                if(chronometer.getText().equals("00:10") && levels.getText().equals("Level 3")){
+                if(chronometer.getText().equals("00:20") && levels.getText().equals("Level 3")){
                     chronometer.stop();
-                    smp.stop();
+                   // chronometer.start();
+                    //smp.stop();
                     showPopUp("Times Up!","Please wait",R.layout.game_over);
                    // levels.setText("Level 2");
                 }
@@ -161,7 +164,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 play.setImageDrawable(getResources().getDrawable(R.drawable.ic_pause_circle_filled));
             }
         }else{
-            showPopUp("CONGRATULATION", "You have " + correct_ans + " points!", R.layout.game_over);
+            showPopUp("CONGRATULATION", "You've got " + correct_ans + " points!", R.layout.game_over);
         }
 
     }
@@ -171,24 +174,56 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         String answer = ((Button)view).getText().toString();
         smp.stop();
         play.setImageDrawable(getResources().getDrawable(R.drawable.ic_play_circle_filled));
-
+        answered_per_round++;
         if(model.getAnswer().contains(answer)){
             Toast.makeText(GameActivity.this,"Correct",Toast.LENGTH_SHORT).show();
             correct_ans++;
         }else{
             wrong_ans++;
-            chronometer.stop();
+
             smp.stop();
 
             if(wrong_ans == 1){
-                img3.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
+                img3.setImageDrawable(getResources().getDrawable(R.drawable.note_black));
             }else if(wrong_ans == 2){
-                img2.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
+                img2.setImageDrawable(getResources().getDrawable(R.drawable.note_black));
             }else if(wrong_ans > 2) {
-                img1.setImageDrawable(getResources().getDrawable(R.drawable.smile_red));
+                img1.setImageDrawable(getResources().getDrawable(R.drawable.note_black));
+                chronometer.stop();
+                smp.stop();
                 showPopUp("Game Over","You don't have enough life!",R.layout.game_over);
             }
         }
+
+
+
+        switch (levels.getText().toString()){
+            case "Level 1":
+                if(answered_per_round == 8) {
+                    answered_per_round = 0;
+                    chronometer.stop();
+                    showPopUpNextLevel("You can now proceed to the next level",levels.getText().toString() + " Completed!");
+                    levels.setText("Level 2");
+                }
+                break;
+            case "Level 2":
+                if(answered_per_round == 8) {
+                    answered_per_round = 0;
+                    chronometer.stop();
+                    showPopUpNextLevel("You can now proceed to the next level",levels.getText().toString() + " Completed!");
+                    levels.setText("Level 3");
+                }
+                break;
+            case "Level 3":
+                if(answered_per_round == 8) {
+                    answered_per_round = 0;
+                    chronometer.stop();
+                    showPopUpNextLevel("Congratulation you've completed all questions", "All Levels Completed");
+                    //levels.setText("Level 2");
+                }
+                break;
+        }
+
         goNext();
 
     }
@@ -225,6 +260,40 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
 
         android.support.v7.app.AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private void showPopUpNextLevel(String Title,String Message){
+        smp.stop();
+        enableButtons(false);
+        TextView title = new TextView(this);
+        title.setText(Title);
+        title.setBackgroundColor(ContextCompat.getColor(this,R.color.colorPrimaryDark));
+        title.setPadding(10, 15, 15, 10);
+        title.setGravity(Gravity.CENTER);
+        title.setTextColor(Color.WHITE);
+
+        title.setTextSize(22);
+        final android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+        builder.setCustomTitle(title);
+
+        builder.setMessage(Message);
+        builder.setView(R.layout.you_won);
+        builder.setCancelable(false);
+        builder.setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                smp.play();
+                dialogInterface.dismiss();
+                chronometer.setBase(SystemClock.elapsedRealtime() + timeWhenStopped);
+                chronometer.start();
+                enableButtons(true);
+
+            }
+        });
+
+        android.support.v7.app.AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
     private void loadData(){

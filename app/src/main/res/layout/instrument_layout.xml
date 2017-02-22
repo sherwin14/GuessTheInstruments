@@ -1,41 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card_view_instrument"
-    android:foreground="?android:attr/selectableItemBackground"
+<RelativeLayout android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    card_view:cardCornerRadius="1dp"
-    android:layout_margin="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     >
-
-    <LinearLayout
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view_instrument"
+        android:foreground="?android:attr/selectableItemBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        card_view:cardCornerRadius="5dp"
+        android:layout_margin="5dp"
         >
 
-        <ImageView
-            android:src="@drawable/placeholder"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/instrumentThumb"
-            android:layout_weight="1"
-            android:scaleType="fitXY"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:paddingBottom="5dp"
-            />
+            android:orientation="vertical"
+            android:background="#ec4896"
+            >
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Instrument Name"
-            android:id="@+id/instrumentName"
-            android:textAlignment="center"
-            android:textColor="@color/colorLight"
-            android:background="@color/colorAccent"
-            />
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+            <ImageView
+                android:src="@drawable/placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/instrumentThumb"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:paddingBottom="5dp"
+                />
+            <TextView
+                android:layout_below="@+id/card_view_instrument"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instrument Name"
+                android:id="@+id/instrumentName"
+                android:textAlignment="center"
+                android:background="@color/colorLight"
+                android:textColor="@color/colorAccent"
+                />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

@@ -71,8 +71,8 @@ public class InstrumentsActivity extends BaseActivity {
 
                 Glide.with(getBaseContext())
                         .load(model.getInstrumentDrawable())
-                        .error(R.drawable.placeholder)
-                        .placeholder(R.drawable.placeholder)
+                        .error(R.drawable.note)
+                        .placeholder(R.drawable.note)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(imageView);
 

@@ -16,13 +16,13 @@
         android:layout_alignParentStart="true"
         android:id="@+id/imageView"
         android:visibility="visible"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageViewHead"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="54dp">
+        android:layout_alignParentStart="true">
 
 
     <LinearLayout
@@ -40,13 +40,12 @@
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:id="@+id/buttonPlay"
             android:text="Play Game"
             android:textColor="@color/colorLight"
             android:background="@drawable/btn_style"
-            android:layout_weight="1"
             android:layout_marginRight="5dp"
             android:drawableTop="@android:drawable/ic_media_play"
             />
@@ -55,10 +54,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
             android:id="@+id/llTop"
-            android:layout_below="@+id/textDescription"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -68,60 +66,37 @@
 
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="177dp"
             android:layout_height="wrap_content"
             android:id="@+id/buttonList"
             android:text="Instruments"
             android:textColor="@color/colorLight"
             android:background="@drawable/btn_style"
-            android:layout_weight="1"
             android:layout_marginRight="5dp"
-            android:drawableRight="@drawable/ic_music_video"
             />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="177dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:id="@+id/buttonInstruction"
                 android:text="Instructions"
                 android:textColor="@color/colorLight"
-                android:background="@drawable/btn_style"
-                android:layout_weight="1"
-                android:drawableRight="@drawable/ic_info"
-                />
+                android:background="@drawable/btn_style" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="LISTENING TO MUSICAL INSTRUMENTS SOUNDS"
-            android:id="@+id/textDescription"
-            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
-            android:shadowColor="@color/colorAccent"
-            android:shadowRadius="5"
-            android:shadowDy="10"
-            android:layout_below="@+id/textTitle"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            />
-
-        <TextView
-            android:shadowColor="#FFEB3B"
-            android:shadowRadius="5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Guess The Instruments"
-            android:id="@+id/textTitle"
-            android:textAlignment="center"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            android:textSize="30dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/app_header"
+        android:scaleType="fitXY"
+        android:id="@+id/imageViewHead"
+        android:visibility="visible"
+        android:layout_margin="13dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

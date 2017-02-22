@@ -26,9 +26,11 @@
         <activity android:name=".activities.InstrumentsActivity"
             android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".activities.ChooseGameActivity"
+        <activity android:name=".activities.InstructionActivity"
+            android:parentActivityName=".activities.MainActivity"
         android:theme="@style/AppTheme"/>
         <activity android:name=".activities.GameActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme"/>
     </application>
 
