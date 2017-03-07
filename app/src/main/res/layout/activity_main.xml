@@ -64,16 +64,15 @@
             >
 
 
-
-        <Button
-            android:layout_width="177dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonList"
-            android:text="Instruments"
-            android:textColor="@color/colorLight"
-            android:background="@drawable/btn_style"
-            android:layout_marginRight="5dp"
-            />
+            <Button
+                android:layout_width="177dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/buttonList"
+                android:text="Instruments"
+                android:textColor="@color/colorLight"
+                android:background="@drawable/btn_style"
+                android:layout_marginRight="5dp"
+                />
 
             <Button
                 android:layout_width="177dp"

@@ -54,6 +54,10 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
         setContentView(R.layout.activity_game);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Game");
+        initializeGame();
+    }
+
+    private void initializeGame(){
         chronometer = (Chronometer) findViewById(R.id.chronometer);
 
         play = (ImageButton) findViewById(R.id.game_play);
@@ -124,7 +128,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                     showPopUp("Times Up!","Please wait",R.layout.game_over);
                     //levels.setText("Level 2");
 
-                 }
+                }
 
                 if(chronometer.getText().equals("00:40") && levels.getText().equals("Level 2")){
                     chronometer.stop();
@@ -136,16 +140,15 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
 
                 if(chronometer.getText().equals("00:20") && levels.getText().equals("Level 3")){
                     chronometer.stop();
-                   // chronometer.start();
+                    // chronometer.start();
                     //smp.stop();
                     showPopUp("Times Up!","Please wait",R.layout.game_over);
-                   // levels.setText("Level 2");
+                    // levels.setText("Level 2");
                 }
             }
 
         });
     }
-
     private void goNext(){
         Log.v("Answer",tempGameModels.size()+"");
         if(tempGameModels.size() > 1){
@@ -218,8 +221,8 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
                 if(answered_per_round == 8) {
                     answered_per_round = 0;
                     chronometer.stop();
-                    showPopUpNextLevel("Congratulation you've completed all questions", "All Levels Completed");
-                    //levels.setText("Level 2");
+                    showPopUpNextLevel("Congratulation you've completed all the questions", "All Levels Completed");
+
                 }
                 break;
         }
@@ -251,12 +254,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
             }
         });
 
-        builder.setNegativeButton("Try Again", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
+
 
         android.support.v7.app.AlertDialog dialog = builder.create();
         dialog.show();
@@ -308,7 +306,7 @@ public class GameActivity extends BaseActivity implements View.OnClickListener{
     }
 
     private void loadQuestions(){
-        gameModels = new ArrayList<>();
+               gameModels = new ArrayList<>();
         gameModels.add(new GameModels(R.drawable.bagpipe_clipart,R.raw.bagpipes_sound,"Banjo","Bagpipes","Clarinet","Piano","Bagpipes"));
         gameModels.add(new GameModels(R.drawable.banjo_clipart,R.raw.banjo_sound,"Banjo","Bass Drum","Electric Guitar","Piano","Banjo"));
         gameModels.add(new GameModels(R.drawable.bass_clipart,R.raw.bass_sound,"Bagpipes","Bass Drum","Piano","Clarinet","Bass Drum"));

@@ -121,8 +121,6 @@ public class InstrumentsActivity extends BaseActivity {
         adapter.setHasStableIds(true);
         instrumentRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-
     }
 
     @Override
