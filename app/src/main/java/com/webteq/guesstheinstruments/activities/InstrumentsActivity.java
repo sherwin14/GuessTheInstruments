@@ -30,7 +30,7 @@ public class InstrumentsActivity extends BaseActivity {
 
     private RecyclerView instrumentRecycler;
     private LinearLayoutManager llm;
-    private InstrumentsModel im;
+    //private InstrumentsModel im;
     private InstrumentsAdapter adapter;
     private List<InstrumentsModel> instrumentsModelList;
     private ImageView imageView;
